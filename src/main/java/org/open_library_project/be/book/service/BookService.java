@@ -7,5 +7,4 @@ public interface BookService {
     BookEntity getBookById(
             final String bookId
     );
-
 }
