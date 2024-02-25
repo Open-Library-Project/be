@@ -6,6 +6,8 @@ import org.open_library_project.be.book.repository.BookRepository;
 import org.open_library_project.be.book.service.BookService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 class BookServiceImpl implements BookService {
@@ -16,5 +18,10 @@ class BookServiceImpl implements BookService {
     ) {
         return bookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Bu id'ye sahip bir BookEntity bulunamadı!"));
+    }
+
+    @Override
+    public List<BookEntity> getAllBooks() {
+        return bookRepository.findAll();
     }
 }
