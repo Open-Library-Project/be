@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/books")
 @RequiredArgsConstructor
@@ -32,5 +34,10 @@ public class BookController {
             @PathVariable("bookId") final String bookId
     ) {
         return bookService.getBookById(bookId);
+    }
+
+    @GetMapping("/get-all")
+    public List<BookEntity> getAllBooks() {
+        return bookService.getAllBooks();
     }
 }
