@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.open_library_project.be.book.model.dto.book.request.BookCreateRequest;
 import org.open_library_project.be.book.model.entity.BookEntity;
 import org.open_library_project.be.book.service.BookCreateService;
+import org.open_library_project.be.book.service.BookDeleteService;
 import org.open_library_project.be.book.service.BookService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ public class BookController {
 
     private final BookCreateService bookCreateService;
     private final BookService bookService;
+    private final BookDeleteService bookDeleteService;
 
     @PostMapping
     public BookEntity createBook(
@@ -39,5 +42,12 @@ public class BookController {
     @GetMapping("/get-all")
     public List<BookEntity> getAllBooks() {
         return bookService.getAllBooks();
+    }
+
+    @DeleteMapping("/book/{bookId}")
+    public void deleteBookById(
+            @PathVariable("bookId") final String bookId
+    ) {
+        bookDeleteService.deleteBookById(bookId);
     }
 }
