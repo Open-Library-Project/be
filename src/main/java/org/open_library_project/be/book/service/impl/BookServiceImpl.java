@@ -16,6 +16,5 @@ class BookServiceImpl implements BookService {
     ) {
         return bookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Bu id'ye sahip bir BookEntity bulunamadı!"));
-
     }
 }
